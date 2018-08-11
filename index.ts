@@ -221,7 +221,7 @@ interface ConfigFN{
 let SetDate:ConfigFN = function(value1:string,value2:string):string{
     return value1+value2;
 }
-//the frist
+//the first
 interface ConfigFNT{
     <T>(value:T):T;
 }
