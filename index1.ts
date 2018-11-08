@@ -63,7 +63,6 @@ let obje = {
 }
 
 type a = "aaa"|"sss";
-
 function threeDot(status:{}){
     return {...status,
             loaded:true}
