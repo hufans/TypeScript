@@ -1,33 +1,20 @@
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    }
-    return function (d, b) {
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-var flag = false; //基本数据类型
-var arr = ["hir", 123, "66"]; //数组类型
+let flag = false; //基本数据类型
+let arr = ["hir", 123, "66"]; //数组类型
 // console.log(arr[1])
-var arrtuple = [666, "hufan"]; //元组类型
+let arrtuple = [666, "hufan"]; //元组类型
 var Glag;
 (function (Glag) {
     Glag[Glag["success"] = 0] = "success";
     Glag[Glag["fail"] = 3] = "fail";
     Glag[Glag["good"] = 4] = "good";
 })(Glag || (Glag = {})); //enum 类型
-var s = Glag.good; //表示下标类型
+let s = Glag.good; //表示下标类型
 // console.log(s)
-var nums; //choose type
-var neverType; //
+let nums; //choose type
+let neverType; //
 // define function
 //es5
-var funcES5 = function () {
+let funcES5 = function () {
     return "es5";
 };
 function funcES5P() {
@@ -37,7 +24,7 @@ function funcES5P() {
 function add(para1, para2) {
     return para1 + para2;
 }
-var add2 = function () {
+let add2 = function () {
     return 5;
 };
 //--choose para
@@ -46,16 +33,11 @@ function choosePara(name, age) {
 }
 // console.log(choosePara("hhah",34))
 //-- defaule para
-function functionDefaule(name, age) {
-    if (age === void 0) { age = 20; }
+function functionDefaule(name, age = 20) {
     return name + age;
 }
 //	last  para
-function sum(a, b) {
-    var result = [];
-    for (var _i = 2; _i < arguments.length; _i++) {
-        result[_i - 2] = arguments[_i];
-    }
+function sum(a, b, ...result) {
     return result.length;
 }
 function reload(str) {
@@ -69,7 +51,7 @@ function reload(str) {
 }
 console.log(reload(45));
 //箭头函数 this 指向上下文
-setTimeout(function () {
+setTimeout(() => {
     console.log(reload("hufan"));
 }, 34);
 // 关于面向对象。
@@ -95,50 +77,46 @@ var obj = {
 };
 // 直接使用 会报错，间接使用不会。
 printName(obj);
-var ma5 = function (key, value) {
+let ma5 = function (key, value) {
     return key + value;
 };
 // console.log(ma5("name","zhangsan"))
 // 可索引接口
-var arrnumber = [1, 2, 3];
-var arrs = ["aaa", "bbbb"];
+let arrnumber = [1, 2, 3];
+let arrs = ["aaa", "bbbb"];
 console.log(arrs[0]);
-var arrO = { name: "zhangsan" };
-var Dog = /** @class */ (function () {
-    function Dog(name) {
+let arrO = { name: "zhangsan" };
+class Dog {
+    constructor(name) {
         this.name = name;
     }
-    Dog.prototype.eat = function () {
+    eat() {
         console.log(this.name + "eat");
-    };
-    return Dog;
-}());
+    }
+}
 var ds = new Dog("xiaohei");
 ds.eat();
-var dev = /** @class */ (function () {
-    function dev(name) {
+class dev {
+    constructor(name) {
         this.name = name;
     }
-    dev.prototype.coding = function (types) {
+    coding(types) {
         console.log(this.name + "---" + types);
-    };
-    return dev;
-}());
-var Child = /** @class */ (function (_super) {
-    __extends(Child, _super);
-    //父类继承，和接口继承
-    function Child(name) {
-        return _super.call(this, name) || this;
     }
-    Child.prototype.set = function () {
+}
+class Child extends dev {
+    //父类继承，和接口继承
+    constructor(name) {
+        super(name);
+    }
+    set() {
         console.log("set iphone");
-    };
-    Child.prototype.work = function () {
+    }
+    work() {
         console.log("work in school");
-    };
-    return Child;
-}(dev));
-var w = new Child("hufan");
+    }
+}
+let w = new Child("hufan");
 console.log(w.name);
 w.coding("c++");
 w.work();
@@ -153,34 +131,33 @@ function getDateT(value) {
     console.log(value);
 }
 getDateT(123);
-var MinClass = /** @class */ (function () {
-    function MinClass() {
+class MinClass {
+    constructor() {
         this.list = [];
     }
-    MinClass.prototype.add = function (value) { };
-    MinClass.prototype.min = function () {
+    add(value) { }
+    min() {
         var minNum = this.list[0];
-        for (var i = 0; i < this.list.length; i++) {
+        for (let i = 0; i < this.list.length; i++) {
             if (minNum > this.list[i]) {
                 minNum = this.list[i];
             }
         }
         return minNum;
-    };
-    return MinClass;
-}());
-var m1 = new MinClass();
-var SetDate = function (value1, value2) {
+    }
+}
+let m1 = new MinClass();
+let SetDate = function (value1, value2) {
     return value1 + value2;
 };
-var getData1 = function (value) {
+let getData1 = function (value) {
     return value;
 };
 console.log(getData1("123"));
 function getData2(value) {
     return value;
 }
-var myGet = getData2;
+let myGet = getData2;
 // //正则表达式
 // let contentOfHTML = `"<!DOCTYPE html>
 // <html>
@@ -215,6 +192,6 @@ var myGet = getData2;
 function getName1(name) {
     console.log("getName is first");
 }
-getName1(function () { return console.log("Param is first"); });
+getName1(() => console.log("Param is first"));
 console.log("hufanx");
 //# sourceMappingURL=index.js.map
